@@ -1,2 +1,2 @@
-# mises-dataset-gpt
-A repository for Web Scraping the brazilian Mises Web
+# Mises Brasil dataset and GPT
+Repository for Web Scraping codes from the Mises Brasil [website](https://mises.org.br/), plus the implementation of the GPT model seen in the video [Let's build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY&t=2s) by [Andrej Karpathy](https://github.com/karpathy). The mises_brasil_dataset.csv documents all publications made by the Mises Institute until 01/10/2023.
