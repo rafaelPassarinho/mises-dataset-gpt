@@ -139,7 +139,7 @@ class Block(nn.Module):
         return x
 
 # super simple bigram model
-class BigramModel(nn.Module):
+class BigramLanguageModel(nn.Module):
     def __init__(self):
         super().__init__()
         # each token directly reads off the logits for the next token from a lookup table
@@ -191,7 +191,7 @@ model = BigramLanguageModel()
 m = model.to(device)
 
 # create a PyTorch optimizer
-optmizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
 for iter in range(max_iters):
 
