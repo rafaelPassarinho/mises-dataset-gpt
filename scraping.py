@@ -41,7 +41,7 @@ def main():
                 full_text += paragraph.text
 
             my_data.append({'title': title.strip(), 'text': " ".join(full_text.split()), 'author': author.strip(), 'pub_date': pub_date.strip()})
-    
+
     df = pd.DataFrame.from_records(my_data)
     df.to_csv('mises_brasil_dataset.csv', index=False)
 if __name__ == '__main__':
