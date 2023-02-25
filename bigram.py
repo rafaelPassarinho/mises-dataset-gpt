@@ -145,7 +145,7 @@ class BigramLanguageModel(nn.Module):
         # each token directly reads off the logits for the next token from a lookup table
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
         self.position_embedding_table = nn.Embedding(block_size, n_embd)
-        self.blocks = nn.Sequencial(*[Block(n_embd, n_head=n_head) for _ in range(n_layer)])
+        self.blocks = nn.Sequential(*[Block(n_embd, n_head=n_head) for _ in range(n_layer)])
         self.ln_f = nn.LayerNorm(n_embd) # final layer norm
         self.lm_head = nn.Linear(n_embd, vocab_size)
     
@@ -160,7 +160,7 @@ class BigramLanguageModel(nn.Module):
         x = self.ln_f(x) # (B, T, C)
         logits = self.lm_head(x) # (B, T, vocab_size)
 
-        if targets in None:
+        if targets is None:
             loss = None
         else:
             B, T, C = logits.shape
@@ -208,6 +208,10 @@ for iter in range(max_iters):
     optimizer.zero_grad(set_to_none=True)
     loss.backward()
     optimizer.step()
+
+# save the model
+FILE = 'bigram_model.pth'
+torch.save(model.state_dict(), FILE)
 
 # generate from the model
 context = torch.zeros((1,1), dtype=torch.long, device=device)
