@@ -170,3 +170,5 @@ def text_generation(test_data):
 
 # Run the function to generate the text
 generated_text = text_generation(test_set)
+text_gpt2 = '\n'.join(str(e) for e in generated_text)
+open('generated_text.txt', 'w').write(text_gpt2)
